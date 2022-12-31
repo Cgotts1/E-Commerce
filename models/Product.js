@@ -10,8 +10,55 @@ class Product extends Model {}
 Product.init(
   {
     // define columns
+
+    id: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      primaryKey: true,
+      autoIncrement: true
+    },
+    product_name: {
+      type: DataTypes.STRING,
+      allowNull: false
+    }, 
+    price: {                                // Add validates the value is a decimal
+      type: DataTypes.DECIMAL,
+      allowNull: false,
+      validate: {
+        isDecimal: true,
+      }
+    },
+    stock: {                                // Add validates that the value is numeric
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      defaultValue: 10,
+      validate: {
+        isNumeric: true,
+      }
+    },
+    category_id: {                            // Add references the Category model's id
+      type: DataTypes.INTEGER,
+
+    }
+
+
   },
   {
+
+    // When adding hooks via the init() method, they go below
+    hooks: {
+      // Use the beforeCreate hook to work with data before a new instance is created
+      beforeCreate: async (newUserProduct) => {
+        // In this case, we are taking the user's product, and making all letters lower case before adding it to the database.
+        newUserProduct.product = await newUserData.product.toLowerCase();
+        return newUserData;
+      },
+      // Here, we use the beforeUpdate hook to make all of the characters lower case in an updated product, before updating the database.
+      beforeUpdate: async (updatedUserData) => {
+        updatedUserData.product = await updatedUserData.product.toLowerCase();
+        return updatedUserData;
+      },
+    },
     sequelize,
     timestamps: false,
     freezeTableName: true,
