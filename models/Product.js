@@ -26,7 +26,7 @@ Product.init(
       allowNull: false,
       validate: {
         isDecimal: true,
-      }
+      },
     },
     stock: {                                // Add validates that the value is numeric
       type: DataTypes.INTEGER,
@@ -34,12 +34,16 @@ Product.init(
       defaultValue: 10,
       validate: {
         isNumeric: true,
-      }
+      },
     },
     category_id: {                            // Add references the Category model's id
       type: DataTypes.INTEGER,
-
-    }
+      references: {
+        // This references the `category model, which we set in `Category.js` as its `modelName` property
+        model: 'category',
+        key: 'id',
+      },
+    },
 
 
   },
