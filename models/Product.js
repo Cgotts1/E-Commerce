@@ -49,18 +49,18 @@ Product.init(
   },
   {
 
-    // When adding hooks via the init() method, they go below
+    
     hooks: {
       // Use the beforeCreate hook to work with data before a new instance is created
-      beforeCreate: async (newUserProduct) => {
+      beforeCreate: async (newProduct) => {
         // In this case, we are taking the user's product, and making all letters lower case before adding it to the database.
-        newUserProduct.product = await newUserData.product.toLowerCase();
-        return newUserData;
+        // newProduct.product = await newProduct.product.toLowerCase();
+        return newProduct;
       },
       // Here, we use the beforeUpdate hook to make all of the characters lower case in an updated product, before updating the database.
-      beforeUpdate: async (updatedUserData) => {
-        updatedUserData.product = await updatedUserData.product.toLowerCase();
-        return updatedUserData;
+      beforeUpdate: async (updatedProduct) => {
+        // updatedProduct.product = await updatedProduct.product.toLowerCase();
+        return updatedProduct;
       },
     },
     sequelize,
