@@ -7,9 +7,10 @@ N/A
 ## <section id = "Description">Description</section>
 This project was made using node.js, express, and sequelize. Once the necessary modules have been installed, a user can copy the schema into MySql Workbench and seed the database. The user should then be able to connect to the server and receive/update information in the database using the get/post/put/delete routes.
 
+Link to video demonstration: https://drive.google.com/file/d/1ThQtPd_WrH1pFoZyZH7lIM4U6s6rtuXa/view
+
 ![Insomnia Routes](./image/Screenshot_20230105_083306.png)
 
-Link to video demonstration: https://drive.google.com/file/d/1ThQtPd_WrH1pFoZyZH7lIM4U6s6rtuXa/view
 
 ## Table of Contents
 1.) <a href = "#License">License</a><br>
